@@ -1,0 +1,51 @@
+<h2>
+    Selected country list
+</h2>
+<table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
+[(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder" (countryevent)="fetchData($event)" >
+
+<thead>
+<tr>
+   
+    <th style="width: 25%">
+        <mfDefaultSorter by="id">ID</mfDefaultSorter>
+    </th>
+    <th style="width: 25%">
+        <mfDefaultSorter by="name">Name</mfDefaultSorter>
+    </th>
+    <th style="width: 25%">
+        <mfDefaultSorter by="threatLevel">Threat Level</mfDefaultSorter>
+    </th>
+    <th style="width: 25%">
+        <mfDefaultSorter by="threatText">Threat Text</mfDefaultSorter>
+    </th>
+</tr>
+<tr>
+    <th colspan="5">
+          <label>
+
+          </label>
+
+        Filter by Name:
+        <input class="form-control" [(ngModel)]="filterQuery"/>
+
+    </th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let item of mf.data">
+   
+    <td>{{item.id}}{{selecteCountry}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.threatLevel}}</td>
+    <td>{{item.threatText | uppercase}}</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+    <td colspan="5">
+        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+    </td>
+</tr>
+</tfoot>
+</table>
