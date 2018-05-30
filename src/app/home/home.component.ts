@@ -22,6 +22,7 @@ export class HomeComponent implements OnDestroy {
   public sortBy ='name';
   public sortOrder = 'asc'; 
   public selecteCountry=[];
+  public select:any;
  
   constructor(public constant:ConstantService,public apiservice:ApiserviceService,
     public router:Router,public dataservice:DataService) { 
@@ -40,7 +41,9 @@ export class HomeComponent implements OnDestroy {
 
   }
 ngOnDestroy(){
-   this.dataservice.homeComponent=this.selecteCountry    //for Send Selected value to another component/displayComponet
+ 
+  this.select=this.selecteCountry    //for Send Selected value to another component/displayComponet
+  this.dataservice.homeComponent=this.select;
 }
   addcoutry1(e,level){
     if(e.target.checked){

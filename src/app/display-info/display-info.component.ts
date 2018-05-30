@@ -26,7 +26,7 @@ export class DisplayInfoComponent implements OnInit {
   constructor(public router:ActivatedRoute,public dataservice:DataService) {
     
        this.data= this.dataservice.homeComponent;
-    console.log("seleted Coutry list" + JSON.stringify(this.selectedCountry));
+    console.log("seleted Coutry list" + JSON.stringify(this.data));
    }
 
    public toInt(num:string){
